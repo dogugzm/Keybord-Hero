@@ -23645,6 +23645,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1684814174 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 733639555, guid: 14470fd151bcc4742b90348391998ddb, type: 3}
+  m_PrefabInstance: {fileID: 2103470673}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1685716153
 GameObject:
   m_ObjectHideFlags: 0
@@ -28595,6 +28600,18 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 733639558, guid: 14470fd151bcc4742b90348391998ddb, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 733639558, guid: 14470fd151bcc4742b90348391998ddb, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 733639558, guid: 14470fd151bcc4742b90348391998ddb, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 1711251473, guid: 14470fd151bcc4742b90348391998ddb, type: 3}
       propertyPath: m_IsTrigger
       value: 1
@@ -28623,6 +28640,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 2103470675, guid: 14470fd151bcc4742b90348391998ddb, type: 3}
+      propertyPath: Chat
+      value: 
+      objectReference: {fileID: 1684814174}
     - target: {fileID: 2103470675, guid: 14470fd151bcc4742b90348391998ddb, type: 3}
       propertyPath: camPosLeft
       value: 

@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     public bool leftEdge;
 
     public GameObject Box;
+    public GameObject Chat;
     //public TextMeshProUGUI textTry;
 
     public GameObject LetterNumber;
@@ -79,6 +80,7 @@ public class PlayerController : MonoBehaviour
             letterLists.Add(other.gameObject);
             string hittedLetter = other.gameObject.GetComponent<TextMeshPro>().text;
             Box.GetComponent<TextMeshPro>().text = Box.GetComponent<TextMeshPro>().text + "" + hittedLetter;
+            Chat.transform.DOScale(new Vector3(Chat.transform.localScale.x +0.1f, Chat.transform.localScale.x + 0.1f, Chat.transform.localScale.x + 0.1f), 1f);
             other.gameObject.GetComponent<TextMeshPro>().DOColor(Color.white, 1f);
         }
 
@@ -116,6 +118,8 @@ public class PlayerController : MonoBehaviour
     {
         Box.GetComponent<TextMeshPro>().text = Box.GetComponent<TextMeshPro>().text.Remove(Box.GetComponent<TextMeshPro>().text.Length - 1);
         letterLists.RemoveAt(letterLists.Count - 1);
+        Chat.transform.DOScale(new Vector3(Chat.transform.localScale.x - 0.1f, Chat.transform.localScale.x - 0.1f, Chat.transform.localScale.x - 0.1f), 1f);
+
 
     }
     private void AnimationControl()
