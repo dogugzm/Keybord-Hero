@@ -122,8 +122,8 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1892407710}
-  m_LocalRotation: {x: 0.9617958, y: -0.27376774, z: 0.0000005066394, w: 0.0000017285345}
-  m_LocalPosition: {x: 0, y: 0, z: 0.059993863}
+  m_LocalRotation: {x: 0.9617958, y: -0.27376774, z: 0.00000051125727, w: 0.0000017298489}
+  m_LocalPosition: {x: 0, y: 0, z: 0.059993744}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 733639558}
@@ -131,7 +131,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.49019432, y: 1.7152581}
+  m_AnchoredPosition: {x: -0.49019453, y: 1.715258}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &1892407712
@@ -316,7 +316,12 @@ MonoBehaviour:
   rightEdge: 0
   leftEdge: 0
   Box: {fileID: 1892407710}
+  Chat: {fileID: 0}
+  LetterNumber: {fileID: 0}
+  camPosRight: {fileID: 0}
+  camPosLeft: {fileID: 0}
   currentState: 0
+  letterLists: []
   animator: {fileID: 2614242616269703623}
 --- !u!95 &2614242616269703623
 Animator:
@@ -337,20 +342,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!136 &1711251473
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7464798933339330805}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.23
-  m_Height: 1.91
-  m_Direction: 1
-  m_Center: {x: 0.0003705004, y: 0.06, z: -0.04837629}
 --- !u!54 &506954518591998137
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -367,6 +358,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
+--- !u!136 &1711251473
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7464798933339330805}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.23
+  m_Height: 1.91
+  m_Direction: 1
+  m_Center: {x: 0.0003705004, y: 0.06, z: -0.04837629}
 --- !u!1001 &2614242616269703617
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour
     public GameObject camPosRight;
     public GameObject camPosLeft;
 
+    
+
     bool canMove;
 
     public PlayerState currentState;
@@ -36,6 +38,7 @@ public class PlayerController : MonoBehaviour
     public List<GameObject> letterLists = new List<GameObject>();
 
     public Animator animator;
+    
 
     CinemachineVirtualCamera vcam;
     CinemachineBasicMultiChannelPerlin noise;
@@ -47,7 +50,7 @@ public class PlayerController : MonoBehaviour
         rightEdge = false;
         speed = 1f;
         currentState = PlayerState.RUNNING;
-
+        
         vcam = GameObject.Find("CM vcam1").GetComponent<CinemachineVirtualCamera>();
         noise = vcam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
     }
@@ -77,14 +80,17 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Letter"))
         {
+
+            
             letterLists.Add(other.gameObject);
             string hittedLetter = other.gameObject.GetComponent<TextMeshPro>().text;
             Box.GetComponent<TextMeshPro>().text = Box.GetComponent<TextMeshPro>().text + "" + hittedLetter;
-            Chat.transform.DOScale(new Vector3(Chat.transform.localScale.x +0.1f, Chat.transform.localScale.x + 0.1f, Chat.transform.localScale.x + 0.1f), 1f);
+            Chat.transform.DOScale(new Vector3(Chat.transform.localScale.x + 0.05f, Chat.transform.localScale.y, Chat.transform.localScale.z), 1f); //sadece x ekseininde scale ettim.
+            Box.GetComponent<TextMeshPro>().margin = new Vector4(Box.GetComponent<TextMeshPro>().margin.x - 0.5f, Box.GetComponent<TextMeshPro>().margin.y, Box.GetComponent<TextMeshPro>().margin.z - 0.5f, Box.GetComponent<TextMeshPro>().margin.w);// text marginini de scale ederek güzel gözükmesini saðladýk
             other.gameObject.GetComponent<TextMeshPro>().DOColor(Color.white, 1f);
         }
 
-        if (other.CompareTag("Obstacle")|| other.CompareTag("ObtsacleAxe"))
+        if (other.CompareTag("Obstacle"))
         {
             StartCoroutine(Injured());
             StartCoroutine(AddNoise(1, 1, 1));
@@ -93,6 +99,14 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Boss"))
         {
             StartCoroutine(Attack());
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Letter"))
+        {
+            //Letter.GetComponent<BoxCollider>().enabled = true;
         }
     }
 
@@ -116,9 +130,11 @@ public class PlayerController : MonoBehaviour
     }
     public void DropLetter()
     {
-        Box.GetComponent<TextMeshPro>().text = Box.GetComponent<TextMeshPro>().text.Remove(Box.GetComponent<TextMeshPro>().text.Length - 1);
-        letterLists.RemoveAt(letterLists.Count - 1);
-        Chat.transform.DOScale(new Vector3(Chat.transform.localScale.x - 0.1f, Chat.transform.localScale.x - 0.1f, Chat.transform.localScale.x - 0.1f), 1f);
+        Box.GetComponent<TextMeshPro>().text = Box.GetComponent<TextMeshPro>().text.Substring(0,Box.GetComponent<TextMeshPro>().text.Length - 2);
+        letterLists.RemoveRange(letterLists.Count - 3,2);
+        Chat.transform.DOScale(new Vector3(Chat.transform.localScale.x - 0.05f, Chat.transform.localScale.y, Chat.transform.localScale.z), 1f); //sadece x ekseininde scale ettim.
+        Box.GetComponent<TextMeshPro>().margin = new Vector4(Box.GetComponent<TextMeshPro>().margin.x + 0.5f, Box.GetComponent<TextMeshPro>().margin.y, Box.GetComponent<TextMeshPro>().margin.z + 0.5f, Box.GetComponent<TextMeshPro>().margin.w);// text marginini de scale ederek güzel gözükmesini saðladýk
+
 
 
     }
@@ -187,13 +203,13 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.A) && !leftEdge)
         {
-            StartCoroutine(RotatePlayer(-10f));
+            StartCoroutine(RotatePlayer(-30f));
             transform.DOMoveX(transform.position.x - 1, 0.5f);
         }
         else if (Input.GetKey(KeyCode.D) && !rightEdge)
         {
-            StartCoroutine(RotatePlayer(10f));
-            transform.DOMoveX(transform.position.x + 1, 0.5f);
+            StartCoroutine(RotatePlayer(30f));
+            transform.DOMoveX(transform.position.x+ 1, 0.5f);
         }
     }
     public IEnumerator RotatePlayer(float degree)

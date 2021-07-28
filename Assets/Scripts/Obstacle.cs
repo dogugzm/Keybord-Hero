@@ -18,10 +18,10 @@ public class Obstacle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (this.CompareTag("Obstacle"))
-        {
-            StartCoroutine(ObstacleMovement());
-        }
+        //if (this.CompareTag("Obstacle"))
+        //{
+        //    StartCoroutine(ObstacleMovement());
+        //}
         
 
     }
@@ -29,16 +29,16 @@ public class Obstacle : MonoBehaviour
     
 
 
-    public IEnumerator ObstacleMovement()
-    {
-        if (!DOTween.IsTweening(transform))
-        {
-            transform.DORotate(transform.eulerAngles + new Vector3(0, 0, 80), 0.7f);
-            yield return new WaitForSeconds(0.7f);
-            transform.DORotate(new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, 0), 0.7f);
-            yield return new WaitForSeconds(0f);
-        }
-    }
+    //public IEnumerator ObstacleMovement()
+    //{
+    //    if (!DOTween.IsTweening(transform))
+    //    {
+    //        transform.DORotate(transform.eulerAngles + new Vector3(0, 0, 80), 0.7f);
+    //        yield return new WaitForSeconds(0.7f);
+    //        transform.DORotate(new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, 0), 0.7f);
+    //        yield return new WaitForSeconds(0f);
+    //    }
+    //}
 
     private void OnTriggerEnter(Collider other)
     {

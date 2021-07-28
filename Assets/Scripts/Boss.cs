@@ -6,7 +6,8 @@ public enum BossStates
 {
     IDLE,
     ATTACK,
-    DEATH
+    DEATH,
+    HIT
 }
 
 
@@ -35,14 +36,31 @@ public class Boss : MonoBehaviour
         {
             animator.SetBool("Attack", true);
             animator.SetBool("Idle", false);
+            animator.SetBool("Hit", false);
+
 
         }
         else if (currentState == BossStates.DEATH)
         {
-            BossDeathParticle.SetActive(true);
+            StartCoroutine(ParticleDeath());
             animator.SetBool("Death", true);
             animator.SetBool("Attack", false);
+            animator.SetBool("Hit", false);
+
         }
+        else if (currentState == BossStates.HIT)
+        {
+            
+            animator.SetBool("Hit", true);
+            animator.SetBool("Attack", false);
+        }
+    }
+
+    public IEnumerator ParticleDeath()
+    {
+        yield return new WaitForSeconds(2f);
+        BossDeathParticle.SetActive(true);
+
     }
 
     private void OnTriggerEnter(Collider other)

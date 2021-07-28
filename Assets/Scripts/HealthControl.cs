@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HealthControl : MonoBehaviour
 {
+    Animator anim;
     int bossMaxHealth=100;
     public int bossCurrentHealth;
     public Boss Boss;
@@ -14,6 +15,7 @@ public class HealthControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
         bossCurrentHealth = bossMaxHealth;
     }
 
@@ -36,7 +38,19 @@ public class HealthControl : MonoBehaviour
 
     public void DropHealth()
     {
-        
         bossCurrentHealth -= 40;
+    }
+    public IEnumerator HitBoss()
+    {
+        Boss.currentState = BossStates.HIT;
+        yield return new WaitForSeconds(1.2f);
+        Boss.currentState = BossStates.ATTACK;
+    }
+    public IEnumerator WaitSecond()
+    {
+        anim.enabled = false;
+        yield return new WaitForSeconds(3f);
+        anim.enabled = true;
+
     }
 }
